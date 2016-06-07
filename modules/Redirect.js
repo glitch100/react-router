@@ -4,7 +4,7 @@ import { createRouteFromReactElement } from './RouteUtils'
 import { formatPattern } from './PatternUtils'
 import { falsy } from './InternalPropTypes'
 
-const { string, object } = React.PropTypes
+const { string, object, bool } = React.PropTypes
 
 /**
  * A <Redirect> is used to declare another URL path a client should
@@ -24,6 +24,12 @@ const Redirect = React.createClass({
         route.path = route.from
 
       route.onEnter = function (nextState, replace) {
+        
+        if (route.external) {
+          window.location.href = route.to
+          return false
+        }
+
         const { location, params } = nextState
 
         let pathname
@@ -63,7 +69,11 @@ const Redirect = React.createClass({
 
       return '/' + parentPattern
     }
-
+  },
+  getDefaultProps() {
+    return {
+      external: false
+    }
   },
 
   propTypes: {
@@ -73,7 +83,8 @@ const Redirect = React.createClass({
     query: object,
     state: object,
     onEnter: falsy,
-    children: falsy
+    children: falsy,
+    external: bool
   },
 
   /* istanbul ignore next: sanity check */

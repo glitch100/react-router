@@ -57,4 +57,18 @@ describe('A <Redirect>', function () {
     })
   })
 
+  // it('redirects to external if prop provided', function (done) {
+  //   render((
+  //     <Router history={createHistory('/nested/1/route1')}>
+  //       <Route path="nested/:id">
+  //         <Route path="route2" />
+  //         <Redirect from="route1" to="http://google.com" external />
+  //       </Route>
+  //     </Router>
+  //   ), node, function () {
+  //     expect(window.location.href).toEqual('http://google.com')
+  //     done()
+  //   })
+  // })
+
 })

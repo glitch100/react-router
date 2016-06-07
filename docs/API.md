@@ -454,6 +454,9 @@ The path you want to redirect from, including dynamic segments.
 ##### `to`
 The path you want to redirect to.
 
+##### `external`
+Boolean value whether you want to redirect to an external link; defaults to false.
+
 ##### `query`
 By default, the query parameters will just pass through but you can specify them if you need to.
 
